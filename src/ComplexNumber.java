@@ -27,11 +27,11 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
    
 	// Prints cartesian form
 	public void printC() {
-		if (re == 0) {
-			System.out.println(im + "i");
-		}
-		else if (im == 0) {
+		if (im == 0) {
 			System.out.println(re);
+		}
+		else if (re == 0) {
+			System.out.println(im + "i");
 		}
 		else {
 			System.out.println(re + " + " + im + "i");
@@ -68,7 +68,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 		}
 		return roots;
 	}
-   
+	
 	// Compares magnitude of complex numbers
 	public int compareTo(ComplexNumber other) {
 		if (mag < other.mag) {
