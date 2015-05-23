@@ -24,15 +24,22 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 			}
 		}
 	}
+<<<<<<< HEAD
 	
 	// Prints cartesian form
 	public void printCartesian(int round) {
+=======
+   
+	// Prints cartesian form
+	public void printC() {
+>>>>>>> 82e6bf021fbae380c63d4b98598c03ebffa68a09
 		if (im == 0) {
 			System.out.println(re);
 		}
 		else if (re == 0) {
 			System.out.println(im + "i");
 		}
+<<<<<<< HEAD
 		else if (im < 0) {
 			System.out.println(round(re, round) + " - " + round(-1 * im, round) + "i");
 		}
@@ -71,6 +78,31 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	// Finds complex roots of given number
 	public Queue<ComplexNumber> findRoots(int root) {
 		if (root <= 0) {
+=======
+		else {
+			System.out.println(re + " + " + im + "i");
+		}
+	}
+
+	// Prints polar form
+	public void printP(){
+		if (ang == 0) {
+			System.out.println(mag);
+		}
+		else {
+			System.out.println(mag + "e^(" + ang + "i)");
+		}
+	}
+   
+	// Prints angular form
+	public void printA() {
+		System.out.println(mag + "(cos(" + ang + ") + isin(" + ang + "))");
+	}
+   
+	// Finds complex roots of given number
+	public Queue<ComplexNumber> findRoot(int root) {
+		if (root < 1) {
+>>>>>>> 82e6bf021fbae380c63d4b98598c03ebffa68a09
 			throw new IllegalArgumentException();
 		}
 		Queue<ComplexNumber> roots = new LinkedList<ComplexNumber>();
