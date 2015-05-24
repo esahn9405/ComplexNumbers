@@ -24,45 +24,35 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 			}
 		}
 	}
-<<<<<<< HEAD
 	
 	// Prints cartesian form
 	public void printCartesian(int round) {
-=======
-   
-	// Prints cartesian form
-	public void printC() {
->>>>>>> 82e6bf021fbae380c63d4b98598c03ebffa68a09
-		if (im == 0) {
-			System.out.println(re);
+		if (re != 0 || im == 0) {
+			System.out.print(round(re, round));
 		}
-		else if (re == 0) {
-			System.out.println(im + "i");
+		if (im < 0) {
+			System.out.print(" - " + -1 * round(im, round) + "i");
 		}
-<<<<<<< HEAD
-		else if (im < 0) {
-			System.out.println(round(re, round) + " - " + round(-1 * im, round) + "i");
+		else if (im > 0) {
+			System.out.print(" + " + round(im, round) + "i");
 		}
-		else {
-			System.out.println(round(re, round) + " + " + round(im, round) + "i");
-		}
+		System.out.println();
 	}
-	
+		
 	public void printCartesian() {
 		this.printCartesian(3);
 	}
 
 	// Prints polar form
-	public void printPolar(int round){
-		if (ang == 0) {
-			System.out.println(round(mag, round));
+	public void printPolar(int round) {
+		System.out.print(round(mag, round));
+		if (ang != 0) {
+			System.out.print("e^(" + round(ang, round) + "i)");
 		}
-		else {
-			System.out.println(round(mag, round) + "e^(" + round(ang, round) + "i)");
-		}
+		System.out.println();
 	}
 	
-	public void printPolar(){
+	public void printPolar() {
 		this.printPolar(3);
 	}
    
@@ -71,38 +61,28 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 		System.out.println(round(mag, round) + "(cos(" + round(ang, round) + ") + isin(" + round(ang, round) + "))");
 	}
 	
-	public void printAngular(){
+	public void printAngular() {
 		this.printAngular(3);
+	}
+	
+	//adds complexNumber
+	public ComplexNumber add(ComplexNumber other) {
+		return new ComplexNumber(re + other.re, im + other.im);
+	}
+	
+	//subtracts compelxNumber
+	public ComplexNumber subtract(ComplexNumber other) {
+		return new ComplexNumber(re - other.re, im - other.im);
+	}
+	
+	//multiplies complexNumber
+	public ComplexNumber multiply(ComplexNumber other) {
+		return new ComplexNumber(re * other.re - im * other.im, re * other.im + im * other.re);
 	}
    
 	// Finds complex roots of given number
 	public Queue<ComplexNumber> findRoots(int root) {
 		if (root <= 0) {
-=======
-		else {
-			System.out.println(re + " + " + im + "i");
-		}
-	}
-
-	// Prints polar form
-	public void printP(){
-		if (ang == 0) {
-			System.out.println(mag);
-		}
-		else {
-			System.out.println(mag + "e^(" + ang + "i)");
-		}
-	}
-   
-	// Prints angular form
-	public void printA() {
-		System.out.println(mag + "(cos(" + ang + ") + isin(" + ang + "))");
-	}
-   
-	// Finds complex roots of given number
-	public Queue<ComplexNumber> findRoot(int root) {
-		if (root < 1) {
->>>>>>> 82e6bf021fbae380c63d4b98598c03ebffa68a09
 			throw new IllegalArgumentException();
 		}
 		Queue<ComplexNumber> roots = new LinkedList<ComplexNumber>();
@@ -129,7 +109,10 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 		}
 	}
    
-	private double round(double number, int round) {
+	public double round(double number, int round) {
+		if (round < 0) {
+			throw new IllegalArgumentException();
+		}
 		double precision = Math.pow(10, round);
 		number = Math.round(number * precision) / precision;
 		return number;
