@@ -79,7 +79,17 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	public ComplexNumber multiply(ComplexNumber other) {
 		return new ComplexNumber(re * other.re - im * other.im, re * other.im + im * other.re);
 	}
-   
+	
+	//divides complexNumber
+	public ComplexNumber divide(ComplexNumber other) {
+		return new ComplexNumber((re * other.re + im * other.im) / other.mag, (- re * other.im + im * other.re) / other.mag );
+	}
+	
+	//returns conjugate
+	public ComplexNumber conjugate() {
+		return new ComplexNumber(re, - im);
+	}
+	
 	// Finds complex roots of given number
 	public Queue<ComplexNumber> findRoots(int root) {
 		if (root <= 0) {
