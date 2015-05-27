@@ -28,13 +28,13 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	// Prints cartesian form
 	public void printCartesian(int round) {
 		if (re != 0 || im == 0) {
-			System.out.print(round(re, round));
+			System.out.print(round(re, round) + " ");
 		}
 		if (im < 0) {
-			System.out.print(" - " + -1 * round(im, round) + "i");
+			System.out.print("- " + -1 * round(im, round) + "i");
 		}
 		else if (im > 0) {
-			System.out.print(" + " + round(im, round) + "i");
+			System.out.print("+ " + round(im, round) + "i");
 		}
 		System.out.println();
 	}
@@ -118,7 +118,8 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 			return 1;
 		}
 	}
-   
+	
+	//round numbers
 	public double round(double number, int round) {
 		if (round < 0) {
 			throw new IllegalArgumentException();

@@ -11,7 +11,9 @@ public class ComplexNumberMain {
 		numbers.remove().printCartesian();
 		numbers.remove().printCartesian();
 		numbers.remove().printCartesian();
-		numbers.remove().printCartesian();
-		System.out.print(1/5.0);
+		ComplexNumber b = numbers.remove();
+		b.printCartesian();
+		ComplexNumber a = c.multiply(b);
+		a.printCartesian();
 	}
 }
