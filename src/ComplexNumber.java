@@ -1,3 +1,7 @@
+/**
+ * The ComplexNumber class allows complex numbers to be computable on java
+ * It not only allows algebraic computation but also finds root of the given complex number
+ */
 import java.util.*;
 
 public class ComplexNumber implements Comparable<ComplexNumber> {
@@ -6,7 +10,13 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	private double mag; //magnitude
 	private double ang; //angle in complex graph
    
-	// Initializes complex numbers
+	/**
+	 * Initializes complex number by taking real and imaginary part of the number as parameters
+	 * The number is stored with real and imaginary part
+	 * along with magnitude and the angle of the number's vector projection
+	 * @param re
+	 * @param im
+	 */
 	public ComplexNumber(double re, double im) {
 		this.re = re;
 		this.im = im;
@@ -25,7 +35,12 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 		}
 	}
 	
-	// Prints cartesian form
+	/** 
+	 * Takes integer round as a parameter and prints out the number in Cartesian form
+	 * Basic format is given by real part + imaginary part * i
+	 * and the each part is rounded with the given input decimal places
+	 * @param round
+	 */
 	public void printCartesian(int round) {
 		if (re != 0 || im == 0) {
 			System.out.print(round(re, round));
@@ -38,12 +53,21 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 		}
 		System.out.println();
 	}
-		
+	
+	/**
+	 * Prints out the number without taking any parameter
+	 * The default rounding is given by up to 3 decimal places
+	 */
 	public void printCartesian() {
 		this.printCartesian(3);
 	}
 
-	// Prints polar form
+	/**
+	 * Takes integer round as a parameter and prints out the number in Cartesian form
+	 * Basic format is given by magnitude * e^( + imaginary part * i
+	 * and the each part is rounded with the given input decimal places
+	 * @param round
+	 */
 	public void printPolar(int round) {
 		System.out.print(round(mag, round));
 		if (ang != 0) {
@@ -82,7 +106,8 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	
 	//divides complexNumber
 	public ComplexNumber divide(ComplexNumber other) {
-		return new ComplexNumber((re * other.re + im * other.im) / other.mag, (- re * other.im + im * other.re) / other.mag );
+		return new ComplexNumber((re * other.re + im * other.im) / other.mag,
+									(- re * other.im + im * other.re) / other.mag );
 	}
 	
 	//returns conjugate
