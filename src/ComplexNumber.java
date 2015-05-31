@@ -9,13 +9,13 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	private double im; //imaginary part
 	private double mag; //magnitude
 	private double ang; //angle in complex graph
-   
+	
 	/**
 	 * Initializes complex number by taking real and imaginary part of the number as parameters
 	 * The number is stored with real and imaginary part
 	 * along with magnitude and the angle of the number's vector projection
-	 * @param re
-	 * @param im
+	 * @param re   the real part that is going to be stored
+	 * @param im   the imaginary part that is going to be stored
 	 */
 	public ComplexNumber(double re, double im) {
 		this.re = re;
@@ -39,7 +39,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	 * Takes integer round as a parameter and prints out the number in Cartesian form
 	 * Basic format is given by real part + imaginary part * i
 	 * and the each part is rounded with the given input decimal places
-	 * @param round
+	 * @param round   the
 	 */
 	public void printCartesian(int round) {
 		if (re != 0 || im == 0) {
@@ -55,7 +55,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	}
 	
 	/**
-	 * Prints out the number without taking any parameter
+	 * Prints out the number in Cartesian form without taking any parameter
 	 * The default rounding is given by up to 3 decimal places
 	 */
 	public void printCartesian() {
@@ -63,8 +63,8 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	}
 
 	/**
-	 * Takes integer round as a parameter and prints out the number in Cartesian form
-	 * Basic format is given by magnitude * e^( + imaginary part * i
+	 * Takes integer round as a parameter and prints out the number in polar form
+	 * Basic format is given by magnitude * e^(angle * i)
 	 * and the each part is rounded with the given input decimal places
 	 * @param round
 	 */
@@ -76,20 +76,38 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 		System.out.println();
 	}
 	
+	/**
+	 * Prints out the in polar form number without taking any parameter
+	 * The default rounding is given by up to 3 decimal places
+	 */
 	public void printPolar() {
 		this.printPolar(3);
 	}
    
-	// Prints angular form
+	/**
+	 * Takes integer round as a parameter and prints out the number in angular form
+	 * Basic format is given by magnitude * (cos(angle) + i * sin(angle))
+	 * and the each part is rounded with the given input decimal places
+	 * @param round
+	 */
 	public void printAngular(int round) {
-		System.out.println(round(mag, round) + "(cos(" + round(ang, round) + ") + isin(" + round(ang, round) + "))");
+		System.out.println(round(mag, round) + "(cos(" + round(ang, round) + ") + isin("
+								+ round(ang, round) + "))");
 	}
 	
+	/**
+	 * Prints out the in angular form number without taking any parameter
+	 * The default rounding is given by up to 3 decimal places
+	 */
 	public void printAngular() {
 		this.printAngular(3);
 	}
 	
-	//adds complexNumber
+	/**
+	 * 
+	 * @param other
+	 * @return
+	 */
 	public ComplexNumber add(ComplexNumber other) {
 		return new ComplexNumber(re + other.re, im + other.im);
 	}
@@ -107,7 +125,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	//divides complexNumber
 	public ComplexNumber divide(ComplexNumber other) {
 		return new ComplexNumber((re * other.re + im * other.im) / other.mag,
-									(- re * other.im + im * other.re) / other.mag );
+									(- re * other.im + im * other.re) / other.mag);
 	}
 	
 	//returns conjugate
