@@ -14,8 +14,8 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	 * Initializes complex number by taking real and imaginary part of the number as parameters
 	 * The number is stored with real and imaginary part
 	 * along with magnitude and the angle of the number's vector projection
-	 * @param re   the real part that is going to be stored
-	 * @param im   the imaginary part that is going to be stored
+	 * @param re    the real part that is going to be stored
+	 * @param im    the imaginary part that is going to be stored
 	 */
 	public ComplexNumber(double re, double im) {
 		this.re = re;
@@ -39,7 +39,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	 * Takes integer round as a parameter and prints out the number in Cartesian form
 	 * Basic format is given by real part + imaginary part * i
 	 * and the each part is rounded with the given input decimal places
-	 * @param round   the
+	 * @param round    the number that sets how many decimal places that numbers will be rounded
 	 */
 	public void printCartesian(int round) {
 		if (re != 0 || im == 0) {
@@ -66,7 +66,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	 * Takes integer round as a parameter and prints out the number in polar form
 	 * Basic format is given by magnitude * e^(angle * i)
 	 * and the each part is rounded with the given input decimal places
-	 * @param round
+	 * @param round    the number that sets how many decimal places that numbers will be rounded
 	 */
 	public void printPolar(int round) {
 		System.out.print(round(mag, round));
@@ -88,11 +88,10 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	 * Takes integer round as a parameter and prints out the number in angular form
 	 * Basic format is given by magnitude * (cos(angle) + i * sin(angle))
 	 * and the each part is rounded with the given input decimal places
-	 * @param round
+	 * @param round    the number that sets how many decimal places that numbers will be rounded
 	 */
 	public void printAngular(int round) {
-		System.out.println(round(mag, round) + "(cos(" + round(ang, round) + ") + isin("
-								+ round(ang, round) + "))");
+		System.out.println(round(mag, round) + "(cos(" + round(ang, round) + ") + isin(" + round(ang, round) + "))");
 	}
 	
 	/**
@@ -104,8 +103,8 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	}
 	
 	/**
-	 * 
-	 * @param other
+	 * Takes other complex number and returns the sum of the complex numbers
+	 * @param other    
 	 * @return
 	 */
 	public ComplexNumber add(ComplexNumber other) {
@@ -124,8 +123,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	
 	//divides complexNumber
 	public ComplexNumber divide(ComplexNumber other) {
-		return new ComplexNumber((re * other.re + im * other.im) / other.mag,
-									(- re * other.im + im * other.re) / other.mag);
+		return new ComplexNumber((re * other.re + im * other.im) / other.mag, (- re * other.im + im * other.re) / other.mag);
 	}
 	
 	//returns conjugate
