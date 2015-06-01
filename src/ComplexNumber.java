@@ -36,9 +36,9 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	}
 	
 	/** 
-	 * Takes integer round as a parameter and prints out the number in Cartesian form
+	 * Takes integer round as a parameter and to prints out the number in Cartesian form
 	 * Basic format is given by real part + imaginary part * i
-	 * and the each part is rounded with the given input decimal places
+	 * and the each part is rounded using the round method with the given input decimal places
 	 * @param round the integer that sets how many decimal places that numbers will be rounded
 	 * @return void
 	 */
@@ -67,7 +67,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	/**
 	 * Takes integer round as a parameter and prints out the number in polar form
 	 * Basic format is given by magnitude * e^(angle * i)
-	 * and the each part is rounded with the given input decimal places
+	 * and the each part is rounded using the round method with the given input decimal places
 	 * @param round the integer that sets how many decimal places that numbers will be rounded
 	 * @return void
 	 */
@@ -91,7 +91,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	/**
 	 * Takes integer round as a parameter and prints out the number in angular form
 	 * Basic format is given by magnitude * (cos(angle) + i * sin(angle))
-	 * and the each part is rounded with the given input decimal places
+	 * and the each part is rounded using the round method with the given input decimal places
 	 * @param round the integer that sets how many decimal places that numbers will be rounded
 	 * @return void
 	 */
