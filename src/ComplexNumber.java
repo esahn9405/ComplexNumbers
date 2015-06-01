@@ -39,7 +39,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	 * Takes integer round as a parameter and prints out the number in Cartesian form
 	 * Basic format is given by real part + imaginary part * i
 	 * and the each part is rounded with the given input decimal places
-	 * @param round the number that sets how many decimal places that numbers will be rounded
+	 * @param round the integer that sets how many decimal places that numbers will be rounded
 	 * @return void
 	 */
 	public void printCartesian(int round) {
@@ -68,7 +68,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	 * Takes integer round as a parameter and prints out the number in polar form
 	 * Basic format is given by magnitude * e^(angle * i)
 	 * and the each part is rounded with the given input decimal places
-	 * @param round the number that sets how many decimal places that numbers will be rounded
+	 * @param round the integer that sets how many decimal places that numbers will be rounded
 	 * @return void
 	 */
 	public void printPolar(int round) {
@@ -92,7 +92,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	 * Takes integer round as a parameter and prints out the number in angular form
 	 * Basic format is given by magnitude * (cos(angle) + i * sin(angle))
 	 * and the each part is rounded with the given input decimal places
-	 * @param round the number that sets how many decimal places that numbers will be rounded
+	 * @param round the integer that sets how many decimal places that numbers will be rounded
 	 * @return void
 	 */
 	public void printAngular(int round) {
@@ -160,7 +160,24 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 		return new ComplexNumber(re, - im);
 	}
 	
-	// Finds complex roots of given number
+	/**
+	 * Takes in exponent and returns the number that is raised to that power
+	 * @param exp the double that will be the exponent
+	 * @return new complex number that is raised to the power
+	 */
+	public ComplexNumber pow(double exp) {
+		double newAng = ang * exp;
+		double newMag = Math.pow(mag, exp);
+		return new ComplexNumber(newMag * Math.cos(newAng), newMag * Math.sin(newAng));
+	}
+	
+	/**
+	 * Takes in roots and computes the roots of the number
+	 * Returns the queue of the roots
+	 * @throws IllegalArgumentException if the root is negative or 0
+	 * @param root the integer number of roots that should be computed
+	 * @return queue of the roots of the complex number
+	 */
 	public Queue<ComplexNumber> findRoots(int root) {
 		if (root <= 0) {
 			throw new IllegalArgumentException();
@@ -170,13 +187,19 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 		double addAngle = 2 * Math.PI / root;
 		for (int i = 0; i < root; i++) {
 			double newMag = Math.pow(mag, 1.0 / root);
-			double newAngle = rootAngle + i * addAngle;
-			roots.add(new ComplexNumber(newMag * Math.cos(newAngle), newMag * Math.sin(newAngle)));
+			double newAng = rootAngle + i * addAngle;
+			roots.add(new ComplexNumber(newMag * Math.cos(newAng), newMag * Math.sin(newAng)));
 		}
 		return roots;
 	}
 	
-	// Compares magnitude of complex numbers
+	/**
+	 * Takes other complex number and compares the magnitude with this complex number
+	 * Returns -1 if this is smaller, 0 if it is the same, 1 if this is bigger
+	 * @overrides comparable interface
+	 * @param other other complex number that would be compared with
+	 * @return integer that indicates if magnitude of this number is bigger, smaller, or the same
+	 */
 	public int compareTo(ComplexNumber other) {
 		if (mag < other.mag) {
 			return -1;
@@ -189,7 +212,14 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 		}
 	}
 	
-	//round numbers
+	/**
+	 * Takes double number that would be rounded
+	 * and integer that indicates the number of decimal digits
+	 * Returns the number that is rounded
+	 * @param number double that would be rounded
+	 * @param round integer that indicates the number of decimal digits
+	 * @return double number that is rounded
+	 */
 	public double round(double number, int round) {
 		if (round < 0) {
 			throw new IllegalArgumentException();
