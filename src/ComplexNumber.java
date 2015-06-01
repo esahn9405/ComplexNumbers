@@ -14,8 +14,8 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	 * Initializes complex number by taking real and imaginary part of the number as parameters
 	 * The number is stored with real and imaginary part
 	 * along with magnitude and the angle of the number's vector projection
-	 * @param re    the real part that is going to be stored
-	 * @param im    the imaginary part that is going to be stored
+	 * @param re the real part that is going to be stored
+	 * @param im the imaginary part that is going to be stored
 	 */
 	public ComplexNumber(double re, double im) {
 		this.re = re;
@@ -39,7 +39,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	 * Takes integer round as a parameter and prints out the number in Cartesian form
 	 * Basic format is given by real part + imaginary part * i
 	 * and the each part is rounded with the given input decimal places
-	 * @param round    the number that sets how many decimal places that numbers will be rounded
+	 * @param round the number that sets how many decimal places that numbers will be rounded
 	 * @return void
 	 */
 	public void printCartesian(int round) {
@@ -68,7 +68,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	 * Takes integer round as a parameter and prints out the number in polar form
 	 * Basic format is given by magnitude * e^(angle * i)
 	 * and the each part is rounded with the given input decimal places
-	 * @param round    the number that sets how many decimal places that numbers will be rounded
+	 * @param round the number that sets how many decimal places that numbers will be rounded
 	 * @return void
 	 */
 	public void printPolar(int round) {
@@ -92,7 +92,7 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	 * Takes integer round as a parameter and prints out the number in angular form
 	 * Basic format is given by magnitude * (cos(angle) + i * sin(angle))
 	 * and the each part is rounded with the given input decimal places
-	 * @param round    the number that sets how many decimal places that numbers will be rounded
+	 * @param round the number that sets how many decimal places that numbers will be rounded
 	 * @return void
 	 */
 	public void printAngular(int round) {
@@ -109,25 +109,42 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 	}
 	
 	/**
-	 * Takes other complex number and returns the sum of the complex numbers
-	 * @param other    
-	 * @return
+	 * Takes other complex number and adds to this complex number
+	 * Returns the sum of the complex numbers
+	 * @param other the other complex number which would be added    
+	 * @return new complex number after addition
 	 */
 	public ComplexNumber add(ComplexNumber other) {
 		return new ComplexNumber(re + other.re, im + other.im);
 	}
 	
-	//subtracts compelxNumber
+	/**
+	 * Takes other complex number and subtracts from this complex number
+	 * Returns the resulting complex number after the subtraction
+	 * @param other the other complex number which would be subtracted
+	 * @return new complex number after subtraction
+	 */
 	public ComplexNumber subtract(ComplexNumber other) {
 		return new ComplexNumber(re - other.re, im - other.im);
 	}
 	
-	//multiplies complexNumber
+	/**
+	 * Takes other complex number and multiplies to this complex number
+	 * Returns the multiple of the complex numbers
+	 * @param other the other complex number which would be multiplied
+	 * @return new complex number after multiplication
+	 */
 	public ComplexNumber multiply(ComplexNumber other) {
 		return new ComplexNumber(re * other.re - im * other.im, re * other.im + im * other.re);
 	}
 	
-	//divides complexNumber
+	/**
+	 * Takes other complex number and divides this complex number with the input
+	 * It will rationalize the denominator by multiplying the conjugate to it
+	 * Returns the resulting complex number after the division
+	 * @param other the other complex number which would be divided with
+	 * @return new complex number after division
+	 */
 	public ComplexNumber divide(ComplexNumber other) {
 		double reNum = re * other.re + im * other.im; // real part of numerator
 		double imNum = - re * other.im + im * other.re; // imaginary part of numerator
@@ -135,7 +152,10 @@ public class ComplexNumber implements Comparable<ComplexNumber> {
 		return new ComplexNumber(reNum/denom, imNum/denom);
 	}
 	
-	//returns conjugate
+	/**
+	 * Returns conjugate of this complex number
+	 * @return new complex number which is the conjugate of this
+	 */
 	public ComplexNumber conjugate() {
 		return new ComplexNumber(re, - im);
 	}
